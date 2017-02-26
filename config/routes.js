@@ -1,3 +1,9 @@
+/*
+ * Module dependencies.
+ */
+
+const articles = require('../app/controllers/articles');
+
 module.exports = function (app, express) {
 
     const router = express.Router();
@@ -6,8 +12,10 @@ module.exports = function (app, express) {
     router.get('/', function(req, res, next) {
         res.render('index', { title: 'Express' });
     });
-
     app.use('/', router);
+
+    // article routes
+    app.get('/articles', articles.index);
 
 // catch 404 and forward to error handler
     app.use(function(req, res, next) {

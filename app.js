@@ -1,3 +1,5 @@
+const fs = require('fs');
+const join = require('path').join;
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -7,6 +9,7 @@ const bodyParser = require('body-parser');
 
 const config = require('./config');
 const mongoose = require('mongoose');
+const models = join(__dirname, 'app/models');
 const port = config.port;
 const app = express();
 
@@ -22,11 +25,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+module.exports = app;
+
+// bootstrap models
+fs.readdirSync(models)
+    .filter(file => ~file.search(/^[^\.].*\.js$/))
+    .forEach(file => require(join(models, file)));
+
 // routes setup
 require('./config/routes')(app, express);
 
-module.exports = app;
-
+// server setup
 connect()
     .on('error', console.log)
     .on('disconnected', connect)

@@ -3,16 +3,12 @@
  */
 
 const mongoose = require('mongoose');
-const notify = require('../mailer');
 
 // const Imager = require('imager');
 // const config = require('../../config');
 // const imagerConfig = require(config.root + '/config/imager.js');
 
 const Schema = mongoose.Schema;
-
-const getTags = tags => tags.join(',');
-const setTags = tags => tags.split(',');
 
 /**
  * Article Schema
@@ -27,7 +23,6 @@ const ArticleSchema = new Schema({
         user: { type : Schema.ObjectId, ref : 'User' },
         createdAt: { type : Date, default : Date.now }
     }],
-    tags: { type: [], get: getTags, set: setTags },
     image: {
         cdnUri: String,
         files: []
