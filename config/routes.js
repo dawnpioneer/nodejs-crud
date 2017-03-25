@@ -16,6 +16,9 @@ module.exports = function (app, express) {
 
     // article routes
     app.get('/articles', articles.index);
+    app.get('/articles/:id/edit', articles.edit);
+    app.put('/articles/:id', articles.update);
+    app.delete('/articles/:id', articles.destroy);
 
 // catch 404 and forward to error handler
     app.use(function(req, res, next) {

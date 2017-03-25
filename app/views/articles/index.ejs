@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% extend('../layout') %>
+
+<h1><%= title %></h1>
+<ul>
+    <% for(var i=0; i<articles.length; i++) {%>
+  <li>
+    <span><%= articles[i].title %></span>
+    <a href="/articles/<%= articles[i]._id %>/deit">Edit</a>
+    <a href="/articles/<%= articles[i]._id %>/delete">Delete</a>
+    <br/>
+    <span><%= articles[i].body %></span>
+  </li>
+    <% } %>
+</ul>

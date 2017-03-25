@@ -10,12 +10,14 @@ const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
 const models = join(__dirname, 'app/models');
+const env = process.env.NODE_ENV || 'development'; // unused
 const port = config.port;
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'app/views'));
+app.engine('ejs', require('express-ejs-extend'));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'app/views'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

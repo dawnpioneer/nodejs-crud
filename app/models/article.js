@@ -17,12 +17,7 @@ const Schema = mongoose.Schema;
 const ArticleSchema = new Schema({
     title: { type : String, default : '', trim : true },
     body: { type : String, default : '', trim : true },
-    user: { type : Schema.ObjectId, ref : 'User' },
-    comments: [{
-        body: { type : String, default : '' },
-        user: { type : Schema.ObjectId, ref : 'User' },
-        createdAt: { type : Date, default : Date.now }
-    }],
+    // user: { type : Schema.ObjectId, ref : 'User' },
     image: {
         cdnUri: String,
         files: []
@@ -102,8 +97,8 @@ ArticleSchema.statics = {
 
     load: function (_id) {
         return this.findOne({ _id })
-            .populate('user', 'name email username')
-            .populate('comments.user')
+            // .populate('user', 'name email username')
+            // .populate('comments.user')
             .exec();
     },
 
@@ -119,7 +114,7 @@ ArticleSchema.statics = {
         const page = options.page || 0;
         const limit = options.limit || 30;
         return this.find(criteria)
-            .populate('user', 'name username')
+            // .populate('user', 'name username')
             .sort({ createdAt: -1 })
             .limit(limit)
             .skip(limit * page)
