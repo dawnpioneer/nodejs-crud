@@ -6,20 +6,29 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const sassMiddleware = require('node-sass-middleware');
 
 const config = require('./config');
-const mongoose = require('mongoose');
 const models = join(__dirname, 'app/models');
-const env = process.env.NODE_ENV || 'development'; // unused
+const env = process.env.NODE_ENV || 'development'; // unused todo to check app.locals from http://expressjs.com/zh-tw/4x/api.html
 const port = config.port;
 const app = express();
 
 // view engine setup
-app.engine('ejs', require('express-ejs-extend'));
+app.engine('ejs', require('express-ejs-extend')); // todo maybe can find a batter way to inject layout.ejs from each page
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'app/views'));
 
-// uncomment after placing your favicon in /public
+// sass setup
+app.use('/css', sassMiddleware({
+    src: __dirname + '/sass',
+    dest: path.join(__dirname, 'public/css'),
+    debug: true,
+    outputStyle: 'compressed'
+}));
+
+// todo uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
