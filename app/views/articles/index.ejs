@@ -1,14 +1,28 @@
 <% extend('../layout') %>
 
-<h1><%= title %></h1>
-<ul>
-    <% for(var i=0; i<articles.length; i++) {%>
-  <li>
-    <span><%= articles[i].title %></span>
-    <a href="/articles/<%= articles[i]._id %>/deit">Edit</a>
-    <a href="/articles/<%= articles[i]._id %>/delete">Delete</a>
-    <br/>
-    <span><%= articles[i].body %></span>
-  </li>
-    <% } %>
-</ul>
+<div class="articles center-align container">
+    <h1><%= title %></h1>
+    <div class="row">
+        <% for(var i = 0; i < articles.length; i++) { %>
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="http://materializecss.com/images/sample-1.jpg">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">
+                        <%= articles[i].title %>
+                    </span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">
+                        <%= articles[i].title %>
+                        <i class="material-icons right">close</i>
+                    </span>
+                    <p><%= articles[i].body %></p>
+                </div>
+            </div>
+        </div>
+        <%  } %>
+    </div>
+</div>
