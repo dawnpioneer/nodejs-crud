@@ -6,4 +6,16 @@ body {
     img {
         height: 200px;
     }
+
+    .view-button {
+        margin-top: -20px;
+        position: absolute;
+        right: 25px;
+    }
+
+    .edit-button {
+        margin-top: -20px;
+        position: absolute;
+        right: 5px;
+    }
 }

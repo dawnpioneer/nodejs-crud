@@ -4,6 +4,7 @@
 
 const mongoose = require('mongoose');
 const { wrap: async } = require('co');
+const { respond, respondOrRedirect } = require('../utils');
 const Article = mongoose.model('Article');
 
 /**
@@ -25,9 +26,6 @@ exports.load = async(function* (req, res, next, id) {
  */
 
 exports.index = async(function* (req, res) {
-    // res.render('index', { title: 'Article' });
-
-    // todo to read data from mongoDB
     const page = (req.query.page > 0 ? req.query.page : 1) - 1;
     const _id = req.query.item;
     const limit = 30;
@@ -118,7 +116,7 @@ exports.update = async(function* (req, res){
  */
 
 exports.show = function (req, res){
-    respond(res, 'articles/show', {
+    res.render('articles/show', {
         title: req.article.title,
         article: req.article
     });

@@ -10,6 +10,8 @@
                     <img class="activator" src="http://materializecss.com/images/sample-1.jpg">
                 </div>
                 <div class="card-content">
+                    <a class="view-button" href="articles/<%= articles[i].id %>"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                    <a class="edit-button" href="articles/<%= articles[i].id %>/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                     <span class="card-title activator grey-text text-darken-4">
                         <%= articles[i].title %>
                     </span>

@@ -15,6 +15,8 @@ module.exports = function (app, express) {
     app.use('/', router);
 
     // article routes
+    app.param('id', articles.load);
+    app.get('/articles/:id', articles.show);
     app.get('/articles', articles.index);
     app.get('/articles/:id/edit', articles.edit);
     app.put('/articles/:id', articles.update);
