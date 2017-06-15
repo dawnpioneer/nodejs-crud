@@ -1,12 +1,12 @@
-<div class="row">
+<% extend('../layout') %>
+
+<div class="row articles">
     <div class="col s12">
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="http://materializecss.com/images/sample-1.jpg">
             </div>
             <div class="card-content">
-                <a class="view-button" href="articles/<%= article.id %>"><i class="fa fa-eye"
-                                                                                aria-hidden="true"></i></a>
                 <span class="card-title activator grey-text text-darken-4">
                         <%= article.title %>
                     </span>

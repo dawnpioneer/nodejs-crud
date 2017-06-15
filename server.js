@@ -15,18 +15,18 @@ const env = process.env.NODE_ENV || 'development'; // unused todo to check app.l
 const port = config.port;
 const app = express();
 
+// sass setup
+app.use(sassMiddleware({
+    src: __dirname + '/sass',
+    dest: path.join(__dirname, 'public'),
+    debug: true,
+    outputStyle: 'compressed'
+}));
+
 // view engine setup
 app.engine('ejs', require('express-ejs-extend')); // todo maybe can find a batter way to inject layout.ejs from each page
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'app/views'));
-
-// sass setup
-app.use('/css', sassMiddleware({
-    src: __dirname + '/sass',
-    dest: path.join(__dirname, 'public/css'),
-    debug: true,
-    outputStyle: 'compressed'
-}));
 
 // todo uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
