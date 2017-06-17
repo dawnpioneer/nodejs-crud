@@ -1,0 +1,31 @@
+<% extend('../layout') %>
+
+<div class="articles center-align container">
+    <h1><%= title %></h1>
+    <div class="row right-align">
+        <!--todo to implement-->
+        <!--<a class="waves-effect waves-light btn" href="articles/new">Create</a>-->
+        <table class="highlight responsive-table dataTable">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Body</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% for(var i = 0; i < articles.length; i++) { %>
+            <tr>
+                <td><%= articles[i].title %></td>
+                <td><%= articles[i].body %></td>
+                <td class="center-align">
+                    <a href="articles/<%= articles[i].id %>"><i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                    <a href="articles/<%= articles[i].id %>/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+            <%  } %>
+            </tbody>
+        </table>
+    </div>
+</div>

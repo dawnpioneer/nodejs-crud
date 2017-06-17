@@ -19,3 +19,27 @@ body {
         right: 5px;
     }
 }
+
+.dataTable {
+    margin: 1em 0;
+    width: 100%;
+    overflow: hidden;
+    background: #FFF;
+    border-radius: 10px;
+    border: 1px solid  #009688;
+
+    th {
+        border: 1px solid #FFF;
+        background-color: #009688;
+        color: #FFF;
+        padding: 1em;
+    }
+
+    tr {
+        border-bottom: solid 1px #DDD;
+    }
+
+    td {
+        border-right: solid 1px #DDD;
+    }
+}

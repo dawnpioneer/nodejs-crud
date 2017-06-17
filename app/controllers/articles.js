@@ -22,7 +22,7 @@ exports.load = async(function* (req, res, next, id) {
 });
 
 /**
- * List
+ * Index
  */
 
 exports.index = async(function* (req, res) {
@@ -40,7 +40,33 @@ exports.index = async(function* (req, res) {
     const count = yield Article.count();
 
     res.render('articles/index', {
-        title: 'Articles',
+        title: 'Article View',
+        articles: articles,
+        page: page + 1,
+        pages: Math.ceil(count / limit)
+    });
+});
+
+/**
+ * List
+ */
+
+exports.list = async(function* (req, res) {
+    const page = (req.query.page > 0 ? req.query.page : 1) - 1;
+    const _id = req.query.item;
+    const limit = 30;
+    const options = {
+        limit: limit,
+        page: page
+    };
+
+    if (_id) options.criteria = { _id };
+
+    const articles = yield Article.list(options);
+    const count = yield Article.count();
+
+    res.render('articles/list', {
+        title: 'Articles Management',
         articles: articles,
         page: page + 1,
         pages: Math.ceil(count / limit)
@@ -87,7 +113,7 @@ exports.create = async(function* (req, res) {
 
 exports.edit = function (req, res) {
     res.render('articles/edit', {
-        title: 'Edit ' + req.article.title,
+        title: 'Article Edit ',
         article: req.article
     });
 };
