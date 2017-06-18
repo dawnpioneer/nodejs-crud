@@ -17,11 +17,6 @@ const Schema = mongoose.Schema;
 const ArticleSchema = new Schema({
     title: { type : String, default : '', trim : true },
     body: { type : String, default : '', trim : true },
-    // user: { type : Schema.ObjectId, ref : 'User' },
-    image: {
-        cdnUri: String,
-        files: []
-    },
     createdAt  : { type : Date, default : Date.now }
 });
 

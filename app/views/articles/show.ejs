@@ -10,6 +10,8 @@
             </div>
             <div class="card-content">
                 <p><%= article.body %></p>
+                <br>
+                <p><%= moment(article.createdAt).format('YYYY/MM/DD hh:mm:ss') %></p>
             </div>
         </div>
     </div>

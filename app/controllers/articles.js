@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const { wrap: async } = require('co');
 const { respond, respondOrRedirect } = require('../utils');
 const Article = mongoose.model('Article');
+const moment = require('moment');
 
 /**
  * Load
@@ -113,7 +114,7 @@ exports.create = async(function* (req, res) {
 
 exports.edit = function (req, res) {
     res.render('articles/edit', {
-        title: 'Article Edit ',
+        title: 'Edit Article',
         article: req.article
     });
 };
@@ -130,7 +131,7 @@ exports.update = async(function* (req, res){
         respondOrRedirect({ res }, `/articles/${article._id}`, article);
     } catch (err) {
         respond(res, 'articles/edit', {
-            title: 'Edit ' + article.title,
+            title: 'Edit Article',
             errors: [err.toString()],
             article
         }, 422);
@@ -143,8 +144,9 @@ exports.update = async(function* (req, res){
 
 exports.show = function (req, res){
     res.render('articles/show', {
-        title: req.article.title,
-        article: req.article
+        title: 'View Article',
+        article: req.article,
+        moment: moment
     });
 };
 
