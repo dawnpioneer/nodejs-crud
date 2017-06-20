@@ -4,6 +4,7 @@
 
 const mongoose = require('mongoose');
 const { wrap: async } = require('co');
+const only = require('only');
 const { respond, respondOrRedirect } = require('../utils');
 const Article = mongoose.model('Article');
 const moment = require('moment');
@@ -41,7 +42,7 @@ exports.index = async(function* (req, res) {
     const count = yield Article.count();
 
     res.render('articles/index', {
-        title: 'Article View',
+        title: 'Articles',
         articles: articles,
         page: page + 1,
         pages: Math.ceil(count / limit)
@@ -87,14 +88,12 @@ exports.new = function (req, res){
 
 /**
  * Create an article
- * Upload an image
  */
 
 exports.create = async(function* (req, res) {
-    const article = new Article(only(req.body, 'title body tags'));
-    // article.user = req.user;
+    const article = new Article(only(req.body, 'title body'));
     try {
-        yield article.uploadAndSave(req.file);
+        yield article.saveArticle();
         respondOrRedirect({ req, res }, `/articles/${article._id}`, article, {
             type: 'success',
             text: 'Successfully created article!'

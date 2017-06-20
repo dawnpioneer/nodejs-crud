@@ -56,7 +56,7 @@ ArticleSchema.methods = {
      * @api private
      */
 
-    uploadAndSave: function (image) {
+    saveArticle: function () {
         const err = this.validateSync();
         if (err && err.toString()) throw new Error(err.toString());
         return this.save();

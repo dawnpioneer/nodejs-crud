@@ -13,10 +13,10 @@ module.exports = function (app, express) {
 
     // article routes
     app.param('id', articles.load);
-    app.get('/articles/:id', articles.show);
     app.get('/articles', articles.list);
     app.get('/articles/new', articles.new);
     app.post('/articles', articles.create);
+    app.get('/articles/:id', articles.show);
     app.get('/articles/:id/edit', articles.edit);
     app.put('/articles/:id', articles.update);
     app.delete('/articles/:id', articles.destroy);

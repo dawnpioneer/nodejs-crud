@@ -17,7 +17,6 @@ function respond (res, tpl, obj, status) {
 function respondOrRedirect ({ req, res }, url = '/', obj = {}, flash) {
   res.format({
     html: () => {
-      if (req && flash) req.flash(flash.type, flash.text);
       res.redirect(url);
     },
     json: () => res.json(obj)
