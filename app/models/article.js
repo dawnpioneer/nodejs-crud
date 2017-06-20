@@ -60,19 +60,6 @@ ArticleSchema.methods = {
         const err = this.validateSync();
         if (err && err.toString()) throw new Error(err.toString());
         return this.save();
-
-      /*
-       if (images && !images.length) return this.save();
-       const imager = new Imager(imagerConfig, 'S3');
-
-       imager.upload(images, function (err, cdnUri, files) {
-       if (err) return cb(err);
-       if (files.length) {
-       self.image = { cdnUri : cdnUri, files : files };
-       }
-       self.save(cb);
-       }, 'article');
-       */
     }
 
 };
