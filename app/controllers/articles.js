@@ -7,6 +7,7 @@ const { wrap: async } = require('co');
 const only = require('only');
 const { respond, respondOrRedirect } = require('../utils');
 const Article = mongoose.model('Article');
+const assign = Object.assign;
 const moment = require('moment');
 
 /**
@@ -124,9 +125,9 @@ exports.edit = function (req, res) {
 
 exports.update = async(function* (req, res){
     const article = req.article;
-    assign(article, only(req.body, 'title body tags'));
+    assign(article, only(req.body, 'title body'));
     try {
-        yield article.uploadAndSave(req.file);
+        yield article.saveArticle();
         respondOrRedirect({ res }, `/articles/${article._id}`, article);
     } catch (err) {
         respond(res, 'articles/edit', {

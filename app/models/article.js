@@ -4,10 +4,6 @@
 
 const mongoose = require('mongoose');
 
-// const Imager = require('imager');
-// const config = require('../../config');
-// const imagerConfig = require(config.root + '/config/imager.js');
-
 const Schema = mongoose.Schema;
 
 /**
@@ -32,14 +28,6 @@ ArticleSchema.path('body').required(true, 'Article body cannot be blank');
  */
 
 ArticleSchema.pre('remove', function (next) {
-    // const imager = new Imager(imagerConfig, 'S3');
-    // const files = this.image.files;
-
-    // if there are files associated with the item, remove from the cloud too
-    // imager.remove(files, function (err) {
-    //   if (err) return next(err);
-    // }, 'article');
-
     next();
 });
 
@@ -78,10 +66,7 @@ ArticleSchema.statics = {
      */
 
     load: function (_id) {
-        return this.findOne({ _id })
-            // .populate('user', 'name email username')
-            // .populate('comments.user')
-            .exec();
+        return this.findOne({ _id }).exec();
     },
 
     /**
@@ -96,7 +81,6 @@ ArticleSchema.statics = {
         const page = options.page || 0;
         const limit = options.limit || 30;
         return this.find(criteria)
-            // .populate('user', 'name username')
             .sort({ createdAt: -1 })
             .limit(limit)
             .skip(limit * page)

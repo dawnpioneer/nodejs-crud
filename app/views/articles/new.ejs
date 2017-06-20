@@ -5,12 +5,12 @@
         <h1><%= title %></h1>
         <form action="/articles" method="post">
             <div class="input-field col s12">
-                <input id="title" name="title" type="text" class="validate">
+                <input name="title" type="text" class="validate">
                 <label for="title">Title</label>
             </div>
 
             <div class="input-field col s12">
-                <textarea id="body" name="body" class="materialize-textarea"></textarea>
+                <textarea name="body" class="materialize-textarea"></textarea>
                 <label for="textarea1">Content</label>
             </div>
             <button class="waves-effect waves-light btn" type="submit">Save</button>

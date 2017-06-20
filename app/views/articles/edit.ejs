@@ -4,15 +4,14 @@
     <div class="col s8 offset-s2">
         <h1><%= title %></h1>
         <form action="/articles/<%= article.id %>" method="post">
+            <input type="hidden" name="_method" value="put"/>
             <div class="input-field col s12">
-                <input id="title" type="text" class="validate" value="<%= article.title %>">
+                <input name="title" type="text" class="validate" value="<%= article.title %>">
                 <label for="first_name">Title</label>
             </div>
 
             <div class="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea">
-                    <%= article.body %>
-                </textarea>
+                <textarea name="body" class="materialize-textarea"><%= article.body %></textarea>
                 <label for="textarea1">Content</label>
             </div>
             <button class="waves-effect waves-light btn" type="submit">Save</button>

@@ -11,7 +11,8 @@
             <div class="card-content">
                 <p><%= article.body %></p>
                 <br>
-                <p><%= moment(article.createdAt).format('YYYY/MM/DD hh:mm:ss') %></p>
+                <p class="pull-right">建立時間：<%= moment(article.createdAt).format('YYYY/MM/DD hh:mm:ss') %></p>
+                <br>
             </div>
         </div>
         <a class="btn white black" href="/articles">Back</a>

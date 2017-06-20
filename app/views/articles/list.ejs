@@ -20,7 +20,11 @@
                 <td><%= articles[i].body %></td>
                 <td class="center-align">
                     <a href="articles/<%= articles[i].id %>"><i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp;&nbsp;
-                    <a href="articles/<%= articles[i].id %>/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a href="articles/<%= articles[i].id %>/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                    <a href="javascript:$('#deleteForm').submit();"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <form id="deleteForm" action="/articles/<%= articles[i].id %>" method="post" onsubmit="return confirm('Are you sure?')">
+                        <input type="hidden" name="_method" value="delete"/>
+                    </form>
                 </td>
             </tr>
             <%  } %>
