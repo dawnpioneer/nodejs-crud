@@ -1,4 +1,4 @@
 module.exports = {
     port: 3000,
-    db: 'mongodb://root:123456@ds159208.mlab.com:59208/star-wars-quotes'
+    db: 'mongodb://username:password@ds159208.mlab.com:59208/database-name'
 };
