@@ -5,14 +5,23 @@
         <h1><%= title %></h1>
         <form action="/articles" method="post">
             <div class="input-field col s12">
-                <input name="title" type="text" class="validate">
-                <label for="title">Title</label>
+                <input name="title" type="text" class="validate" value="<%= article.title %>">
+                <label for="first_name">Title</label>
             </div>
 
             <div class="input-field col s12">
-                <textarea name="body" class="materialize-textarea"></textarea>
+                <textarea name="body" class="materialize-textarea"><%= article.body %></textarea>
                 <label for="textarea1">Content</label>
             </div>
+
+            <% if(typeof errors!='undefined') { %>
+            <div id="card-alert" class="col s12 card red lighten-5">
+                <div class="card-content red-text">
+                    <p><%= errors %></p>
+                </div>
+            </div>
+            <% } %>
+
             <button class="waves-effect waves-light btn" type="submit">Save</button>
             <a class="btn white black" href="/articles">Back</a>
         </form>

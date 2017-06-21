@@ -9,6 +9,7 @@ const { respond, respondOrRedirect } = require('../utils');
 const Article = mongoose.model('Article');
 const assign = Object.assign;
 const moment = require('moment');
+const validator = require('validator');
 
 /**
  * Load
@@ -101,7 +102,7 @@ exports.create = async(function* (req, res) {
         });
     } catch (err) {
         respond(res, 'articles/new', {
-            title: article.title || 'New Article',
+            title: 'New Article',
             errors: [err.toString()],
             article
         }, 422);

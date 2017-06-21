@@ -14,6 +14,15 @@
                 <textarea name="body" class="materialize-textarea"><%= article.body %></textarea>
                 <label for="textarea1">Content</label>
             </div>
+
+            <% if(typeof errors!='undefined') { %>
+            <div id="card-alert" class="col s12 card red lighten-5">
+                <div class="card-content red-text">
+                    <p><%= errors %></p>
+                </div>
+            </div>
+            <% } %>
+
             <button class="waves-effect waves-light btn" type="submit">Save</button>
             <a class="btn white black" href="/articles">Back</a>
         </form>
