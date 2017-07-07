@@ -33,3 +33,7 @@ $ npm start
 ```
 
 and visit [http://localhost:3000/](http://localhost:3000/)
+
+## Reference
+
+the structure is refer to [Nodejs Express Mongoose Demo](https://github.com/madhums/node-express-mongoose-demo)
